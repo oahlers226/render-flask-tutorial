@@ -34,7 +34,7 @@ def db_create():
                     Last varchar(255),
                     City varchar(255),
                     Name varchar(255),
-                    Number int"""
+                    Number int;"""
         )
         return "Basketball Table Created"
     except Exception as e:
