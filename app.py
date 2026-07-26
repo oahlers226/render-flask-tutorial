@@ -24,7 +24,7 @@ def db_test():
 
 
 @app.route("/db_create")
-def db_test():
+def db_create():
     conn = None
     try:
         conn = psycopg2.connect(DATABASE_URL)
