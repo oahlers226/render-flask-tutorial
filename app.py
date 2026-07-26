@@ -43,3 +43,26 @@ def db_create():
     finally:
         if conn is not None:
             conn.close()
+
+
+@app.route('/db_insert')
+def db_inserting():
+    conn = None
+    try:
+        conn = psycopg2.connect(DATABASE_URL)
+        c = conn.cursor()
+        c.execute("""
+            INSERT INTO Basketball (First, Last, City, Name, Number)
+            Values
+            ('Jayson', 'Tatum', 'Boston', 'Celtics', 0),
+            ('Stephen', 'Curry', 'San Francisco', 'Warriors', 30),
+            ('Nikola', 'Jokic', 'Denver', 'Nuggets', 15),
+            ('Kawhi', 'Leonard', 'Los Angeles', 'Clippers', 2);
+        """)
+        conn.commit()
+        return "Basketball Table Successfully Populated"
+    except Exception as e:
+        return f"Database connection failed: {e}"
+    finally:
+        if conn is not None:
+            conn.close()
