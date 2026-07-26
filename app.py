@@ -66,3 +66,29 @@ def db_inserting():
     finally:
         if conn is not None:
             conn.close()
+
+
+@app.route('/db_select')
+def selecting():
+    conn = None
+    try:
+        conn = psycopg2.connect(DATABASE_URL)
+        c = conn.cursor()
+        c.execute("SELECT * FROM Basketball;")
+        records = c.fetchall()
+
+        html = "<table border='1'>"
+        html += "<tr><th>First</th><th>Last</th><th>City</th><th>Name</th><th>Number</th></tr>"
+        for row in records:
+            html += "<tr>"
+            for value in row:
+                html += f"<td>{value}</td>"
+            html += "</tr>"
+        html += "</table>"
+
+        return html
+    except Exception as e:
+        return f"Database connection failed: {e}"
+    finally:
+        if conn is not None:
+            conn.close()
