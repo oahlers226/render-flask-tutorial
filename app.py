@@ -36,6 +36,7 @@ def db_create():
                     Name varchar(255),
                     Number int);"""
         )
+        conn.commit()
         return "Basketball Table Created"
     except Exception as e:
         return f"Database connection failed: {e}"
