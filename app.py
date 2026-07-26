@@ -1,5 +1,6 @@
 from flask import Flask
-import psycopg2-binary
+import psycopg2
+
 app = Flask(__name__)
 
 DATABASE_URL = "postgresql://render_flask_tutorial_db_user:7x58Q5YgWOTMFhPI0GewAICQ04bst1o3@dpg-d9ioasfavr4c73b6ka3g-a/render_flask_tutorial_db"
