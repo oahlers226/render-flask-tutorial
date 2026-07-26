@@ -35,7 +35,7 @@ def db_test():
                     City varchar(255),
                     Name varchar(255),
                     Number int"""
-        ))
+        )
         return "Basketball Table Created"
     except Exception as e:
         return f"Database connection failed: {e}"
